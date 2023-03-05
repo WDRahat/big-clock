@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript Clock</title>
+    <style>
+      body  {
+        font-family: Arial, sans-serif;
+        font-size: 20rem;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="clock"></div>
+    <script>
+     function updateClock() {
+       const clock = document.getElementById('clock');
+       const now = new Date();
+       let hours = now.getHours();
+       const minutes = now.getMinutes().toString().padStart(2, '0');
+       const seconds = now.getSeconds().toString().padStart(2, '0');
+       let ampm = 'AM';
+       if (hours > 12) {
+         hours -= 12;
+         ampm = 'PM';
+       }
+       hours = hours.toString().padStart(2, '0');
+       clock.textContent = `${hours}:${minutes}:${seconds} ${ampm}`;
+     }
+
+     setInterval(updateClock, 1000);
+   </script>
+  </body>
+</html>
